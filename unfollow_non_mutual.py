@@ -2,8 +2,8 @@ import requests
 import time
 
 # Replace with your GitHub username and token
-GITHUB_USERNAME = "your_username"
-TOKEN = "your_personal_access_token"
+GITHUB_USERNAME = "enter your username here"
+TOKEN = "enter your token here"
 
 BASE_URL = "https://api.github.com"
 HEADERS = {
@@ -52,4 +52,4 @@ if __name__ == "__main__":
         print(f"Unfollowing {len(non_mutuals)} users who don't follow back...")
         unfollow_users(non_mutuals)
     else:
-        print("✅ No non-mutual follows found."
+        print("✅ No non-mutual follows found.")
