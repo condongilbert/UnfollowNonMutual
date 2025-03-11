@@ -1,9 +1,9 @@
 import requests
 import time
 
-# Replace with your GitHub username and token
-GITHUB_USERNAME = "enter your username here"
-TOKEN = "enter your token here"
+# Replace with your GitHub username and token (be sure to enable the 'user' scope when creating token)
+GITHUB_USERNAME = "condongilbert"
+TOKEN = "insert token here"
 
 BASE_URL = "https://api.github.com"
 HEADERS = {
