@@ -1,11 +1,15 @@
 import requests
+import os
+from dotenv import load_dotenv  
 
+
+load_dotenv
 # Replace with your GitHub username and personal access token, be sure to enable the 'user' scope when creating token
-GITHUB_USERNAME = "condongilbert"
-TOKEN = "enter token"
+GITHUB_USERNAME = os.getenv('GITHUB_USERNAME')
+GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
 
 HEADERS = {
-    "Authorization": f"token {TOKEN}",
+    "Authorization": f"token {GITHUB_TOKEN}",
     "Accept": "application/vnd.github.v3+json"
 }
 
