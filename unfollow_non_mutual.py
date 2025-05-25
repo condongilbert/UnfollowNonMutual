@@ -7,6 +7,9 @@ load_dotenv()
 # Replace with your GitHub username and token (be sure to enable the 'user' scope when creating token)
 GITHUB_USERNAME = os.getenv("GITHUB_USERNAME")
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
+ignore_list_str = os.getenv("IGNORE_LIST", "")
+IGNORE_LIST = set(user.strip() for user in ignore_list_str.split(",") if user.strip())
+
 
 BASE_URL = "https://api.github.com"
 HEADERS = {
@@ -49,8 +52,10 @@ if __name__ == "__main__":
     following = get_following()
     followers = get_followers()
 
-    non_mutuals = following - followers  # Users you follow who don't follow back
 
+
+    non_mutuals = following - followers - IGNORE_LIST  # Users you follow who don't follow back
+    print(IGNORE_LIST)
     if non_mutuals:
         print(f"Unfollowing {len(non_mutuals)} users who don't follow back...")
         print(non_mutuals)
