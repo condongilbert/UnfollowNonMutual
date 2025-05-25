@@ -55,7 +55,6 @@ if __name__ == "__main__":
 
 
     non_mutuals = following - followers - IGNORE_LIST  # Users you follow who don't follow back
-    print(IGNORE_LIST)
     if non_mutuals:
         print(f"Unfollowing {len(non_mutuals)} users who don't follow back...")
         print(non_mutuals)
