@@ -2,7 +2,7 @@
 
 A simple automation tool that unfollows inactive or unwanted users on your GitHub account. Great for keeping your "Following" list clean and relevant.
 
-![GitHub stars](https://img.shields.io/github/stars/yourusername/github-unfollow-bot?style=social)
+![GitHub stars](https://img.shields.io/github/stars/condongilbert/UnfollowProg?style=social)
 ![Python](https://img.shields.io/badge/Made%20with-Python-blue?logo=python)
 
 ---
