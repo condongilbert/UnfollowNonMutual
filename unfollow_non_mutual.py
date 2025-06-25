@@ -4,7 +4,7 @@ import os
 from dotenv import load_dotenv  
 
 load_dotenv()
-# Replace with your GitHub username and token (be sure to enable the 'user' scope when creating token)
+# Create an .env file and update the fields with your github info(be sure to enable the 'user' scope when creating token)
 GITHUB_USERNAME = os.getenv("GITHUB_USERNAME")
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 ignore_list_str = os.getenv("IGNORE_LIST", "")
@@ -53,7 +53,7 @@ if __name__ == "__main__":
     followers = get_followers()
 
 
-
+    #update ignore list with followers you would like to follow even if they are not following you back ie important users who you dont expect a follow from eg microsoft
     non_mutuals = following - followers - IGNORE_LIST  # Users you follow who don't follow back
     if non_mutuals:
         print(f"Unfollowing {len(non_mutuals)} users who don't follow back...")
