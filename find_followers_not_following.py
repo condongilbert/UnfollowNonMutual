@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 
 load_dotenv
-# Replace with your GitHub username and personal access token, be sure to enable the 'user' scope when creating token
+# Replace with your GitHub username and personal access token or update .env file, be sure to enable the 'user' scope when creating token
 GITHUB_USERNAME = os.getenv('GITHUB_USERNAME')
 GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
 
