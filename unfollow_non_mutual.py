@@ -54,6 +54,7 @@ if __name__ == "__main__":
 
 
     #update ignore list with followers you would like to follow even if they are not following you back ie #important users who you dont expect a follow from eg microsoft
+    #Uncomment the unfollow_users line to enable unfollowing
     non_mutuals = following - followers - IGNORE_LIST  # Users you follow who don't follow back
     if non_mutuals:
         print(f"Unfollowing {len(non_mutuals)} users who don't follow back...")
