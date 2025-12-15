@@ -62,3 +62,6 @@ if __name__ == "__main__":
         #unfollow_users(non_mutuals)
     else:
         print("✅ No non-mutual follows found.")
+
+    #find potential new users to follow 
+    #find colloborators of your followers and see if you want to follow them
