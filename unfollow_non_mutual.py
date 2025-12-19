@@ -64,4 +64,4 @@ if __name__ == "__main__":
         print("✅ No non-mutual follows found.")
 
     #find potential new users to follow 
-    #find colloborators of your followers and see if you want to follow them
+    #find collaborators of your followers and see if you want to follow them
