@@ -101,4 +101,4 @@ Pull requests are welcome! You can contribute by:
 
 ## 📄 License
 
-MIT © 2025 [Your Name](https://github.com/yourusername)
+MIT © 2025 [Gilbert Condon](https://github.com/condongilbert)
