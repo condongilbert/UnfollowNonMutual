@@ -1,6 +1,7 @@
 import requests
 import time
 import os
+import argparse
 from dotenv import load_dotenv  
 
 load_dotenv()
@@ -37,31 +38,41 @@ def get_followers():
     """Get a list of users following you."""
     return get_paginated_list(f"{BASE_URL}/users/{GITHUB_USERNAME}/followers")
 
-def unfollow_users(users_to_unfollow):
+def unfollow_users(users_to_unfollow, dry_run=False):
     """Unfollow users who don't follow back."""
     for user in users_to_unfollow:
-        url = f"{BASE_URL}/user/following/{user}"
-        response = requests.delete(url, headers=HEADERS)
-        if response.status_code == 204:
-            print(f"✅ Unfollowed {user}")
+        if dry_run:
+            print(f"🔍 Would unfollow {user} (dry-run mode)")
         else:
-            print(f"❌ Failed to unfollow {user}: {response.status_code} - {response.text}")
-        time.sleep(1)  # Avoid rate limits
+            url = f"{BASE_URL}/user/following/{user}"
+            response = requests.delete(url, headers=HEADERS)
+            if response.status_code == 204:
+                print(f"✅ Unfollowed {user}")
+            else:
+                print(f"❌ Failed to unfollow {user}: {response.status_code} - {response.text}")
+            time.sleep(1)  # Avoid rate limits
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Unfollow non-mutual GitHub follows.")
+    parser.add_argument("--dry-run", action="store_true", help="Preview unfollow actions without executing them.")
+    args = parser.parse_args()
+
     following = get_following()
     followers = get_followers()
 
-
     #update ignore list with followers you would like to follow even if they are not following you back ie #important users who you dont expect a follow from eg microsoft
-    #Uncomment the unfollow_users line to enable unfollowing
     non_mutuals = following - followers - IGNORE_LIST  # Users you follow who don't follow back
     if non_mutuals:
-        print(f"Unfollowing {len(non_mutuals)} users who don't follow back...")
-        print(non_mutuals)
-        #unfollow_users(non_mutuals)
+        print(f"Found {len(non_mutuals)} users who don't follow back...")
+        if args.dry_run:
+            print("Dry-run mode: Previewing unfollow actions.")
+            unfollow_users(non_mutuals, dry_run=True)
+        else:
+            print("Unfollowing users...")
+            unfollow_users(non_mutuals)
     else:
         print("✅ No non-mutual follows found.")
 
     #find potential new users to follow 
     #find collaborators of your followers and see if you want to follow them
+    #python unfollow_non_mutual.py --dry-run 
